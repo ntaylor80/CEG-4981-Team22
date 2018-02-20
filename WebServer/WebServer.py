@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 from flask_bootstrap import Bootstrap
-import json
+import random
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -14,7 +14,7 @@ def index():
 def availability():
     data = request.get_json()
     id = data["lot"]
-    return jsonify(test=id)
+    return jsonify(student=random.randint(0,100),faculty=random.randint(100,200),date="2018-02-20   ");
 
 
 @app.route('/hello', methods=('GET', 'POST'))

@@ -8,42 +8,48 @@
 
 {% block content %}
 
-
-<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Parking Lot&nbsp;&nbsp;<span
-            class="caret"></span></button>
-    <ul class="dropdown-menu" id="dropdown">
-        <li>
-            <button id="1" class="btn input-block-level btn-primary form-control" type="button">Lot 1&nbsp;&nbsp;
-            </button>
-        </li>
-        <li>
-            <button id="2" class="btn input-block-level btn-primary form-control" type="button">Lot 2&nbsp;&nbsp;
-            </button>
-        </li>
-        <li>
-            <button id="3" class="btn input-block-level btn-primary form-control" type="button">Lot 3&nbsp;&nbsp;
-            </button>
-            </a></li>
-        <li>
-            <button id="4" class="btn input-block-level btn-primary form-control" type="button">Lot 4</button>
-        </li>
-    </ul>
-</div><!--dropdown-->
-<div >
-    <label id="lot">Showing information for lot 1</label>
+<div class="well">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Parking
+            Lot&nbsp;&nbsp;<span
+                    class="caret"></span></button>
+        <ul class="dropdown-menu" id="dropdown">
+            <li>
+                <button id="1" class="btn input-block-level btn-primary form-control" type="button">Lot 1&nbsp;&nbsp;
+                </button>
+            </li>
+            <li>
+                <button id="2" class="btn input-block-level btn-primary form-control" type="button">Lot 2&nbsp;&nbsp;
+                </button>
+            </li>
+            <li>
+                <button id="3" class="btn input-block-level btn-primary form-control" type="button">Lot 3&nbsp;&nbsp;
+                </button>
+                </a></li>
+            <li>
+                <button id="4" class="btn input-block-level btn-primary form-control" type="button">Lot 4</button>
+            </li>
+        </ul>
+    </div><!--dropdown-->
+    <div>
+        <label id="lot">No lot shown</label>
+    </div>
+    <div>
+        <label>Student Parking Spaces</label>
+        <input type="number" class="form-control" id="studentParking" placeholder="5" readonly>
+        <small id="studentHelp" class="form-text text-muted">White parking spaces.</small>
+    </div>
+    <div>
+        <label>Faculty Spaces</label>
+        <input type="number" class="form-control" id="facultyParking" placeholder="20" readonly>
+        <small id="facultylHelp" class="form-text text-muted">Yellow parking spaces.</small>
+    </div>
+    <div>
+        <label>Last Scan Time</label>
+        <input type="input" class="form-control" id="scanTime" readonly>
+        <small id="scanHelp" class="form-text text-muted">Actual availability may vary</small>
+    </div>
 </div>
-<div >
-    <label>Student Parking Spaces</label>
-    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="5" readonly>
-    <small id="studentHelp" class="form-text text-muted">White parking spaces.</small>
-</div>
-<div >
-    <label>Faculty Spaces</label>
-    <input type="number" class="form-control" id="Faculty" placeholder="20" readonly>
-    <small id="facultylHelp" class="form-text text-muted">Yellow parking spaces.</small>
-</div>
-
 
 {% endblock %}
 

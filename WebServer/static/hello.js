@@ -9,11 +9,20 @@ $.ajax({
   url: "/availability",
   data: JSON.stringify({lot: id}),
   success:  function(data, status){
-        alert("Data: " + data.test + "\nStatus: " + status);
+
+      if (status == "success"){
+        document.getElementById("lot").innerHTML = "Showing information for lot " + id;
+        document.getElementById("studentParking").value = data.student;
+        document.getElementById("facultyParking").value = data.faculty;
+        document.getElementById("scanTime").value = data.date;
+      }else{
+          alert("connection error")
+      }
+
+
     },
   dataType: "json"
 });
-alert("request");
 }
 window.onload = function() {
     $('.' + 'dropdown-menu' + ' button').each(function () {
