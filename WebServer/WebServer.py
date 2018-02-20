@@ -14,7 +14,7 @@ def index():
 def availability():
     data = request.get_json()
     id = data["lot"]
-    return jsonify(student=random.randint(0,100),faculty=random.randint(100,200),date="2018-02-20   ");
+    return jsonify(student=random.randint(0,100),faculty=random.randint(100,200),date="2018-02-20 at 17:31");
 
 
 @app.route('/hello', methods=('GET', 'POST'))
