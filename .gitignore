@@ -1,3 +1,5 @@
 .idea
+.idea/*
 .directory
 *.kate-swp
+WebServer/config.json

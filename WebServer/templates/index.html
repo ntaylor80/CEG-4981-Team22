@@ -7,28 +7,15 @@
 
 
 {% block content %}
-<div class="mx-auto" style="width: 200px;">
+<div class="mx-auto center-block" style="width: 200px;">
     <div class="well">
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Parking
                 Lot&nbsp;&nbsp;<span
                         class="caret"></span></button>
             <ul class="dropdown-menu" id="dropdown">
-                <li>
-                    <button id="1" class="btn input-block-level btn-primary form-control" type="button">Lot 1&nbsp;&nbsp;
-                    </button>
-                </li>
-                <li>
-                    <button id="2" class="btn input-block-level btn-primary form-control" type="button">Lot 2&nbsp;&nbsp;
-                    </button>
-                </li>
-                <li>
-                    <button id="3" class="btn input-block-level btn-primary form-control" type="button">Lot 3&nbsp;&nbsp;
-                    </button>
-                    </a></li>
-                <li>
-                    <button id="4" class="btn input-block-level btn-primary form-control" type="button">Lot 4</button>
-                </li>
+                
+                {{ buttons|safe }}
             </ul>
         </div><!--dropdown-->
         <div>
