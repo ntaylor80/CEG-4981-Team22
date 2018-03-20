@@ -4,6 +4,7 @@ from flaskext.mysql import MySQL
 from pathlib import Path
 import json
 import Database as db
+from image import analyze_image
 
 config_name = 'config.json'
 
@@ -48,12 +49,23 @@ def availability():
     id = data["lot"]
     conn = mysql.connect()
     data = db.get_lot_status(conn, id)
+    conn.close()
     if data:
         result =jsonify(success=1,student=data["student"],faculty=data["faculty"],date=data["date"])
     else:
         result = jsonify(success=0)
     return result
 
+@app.route('/update',methods=['POST'])
+def update():
+    data = request.get_json()
+
+    if 'image' in data and 'lot' in data:
+        conn = mysql.connect()
+        lots = analyze_image(data['image'])
+        db.update_lot(conn,lots[0],lots[1],data['lot'])
+        conn.close()
+        return jsonify(result="1")
 
 @app.route('/hello', methods=('GET', 'POST'))
 def hello():
