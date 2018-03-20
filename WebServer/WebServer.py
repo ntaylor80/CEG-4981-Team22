@@ -25,6 +25,35 @@ app.config['MYSQL_DATABASE_HOST'] = config["database_ip"]
 mysql = MySQL()
 mysql.__init__(app)
 
+drones = {}
+
+@app.route('/drone',methods=["POST"])
+def drone():
+    data = request.get_json()
+    action = data["Action"]
+
+    if action == "Register":
+        id = data["ID"]
+        drones[id] = Drone(id)
+        result = jsonify(Result=1)
+    elif action == "Update":
+        id = data["ID"]
+        status = data["Status"]
+        drones[id].status = status_values[status]
+        result = jsonify(Result=1)
+    elif action == "Analyze":
+        lot = data["Lot"]
+        image = data["Image"]
+        #TODO process image
+        result = jsonify(Result=1)
+    elif action == "System_Fault":
+        #TODO process error
+        result = jsonify(Result=1)
+    else:
+        return jsonify(Status=0)
+
+    return jsonify(Status = 1,DATA=result)
+
 @app.route('/')
 def index():
     button_template = "<li>\n" \
