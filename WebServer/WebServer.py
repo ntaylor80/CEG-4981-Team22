@@ -27,32 +27,17 @@ mysql.__init__(app)
 
 drones = {}
 
-@app.route('/drone',methods=["POST"])
+@app.route('/drone/available',methods=["POST"])
 def drone():
-    data = request.get_json()
-    action = data["Action"]
+    conn = mysql.connect()
+    data = db.find_lot_to_update(conn)
 
-    if action == "Register":
-        id = data["ID"]
-        drones[id] = Drone(id)
-        result = jsonify(Result=1)
-    elif action == "Update":
-        id = data["ID"]
-        status = data["Status"]
-        drones[id].status = status_values[status]
-        result = jsonify(Result=1)
-    elif action == "Analyze":
-        lot = data["Lot"]
-        image = data["Image"]
-        #TODO process image
-        result = jsonify(Result=1)
-    elif action == "System_Fault":
-        #TODO process error
-        result = jsonify(Result=1)
+    if data == 0:
+        result = jsonify(Status=1,Update = 0)
     else:
-        return jsonify(Status=0)
+        result = jsonify(Status=1,Update = 1,Lot = data)
 
-    return jsonify(Status = 1,DATA=result)
+    return result
 
 @app.route('/')
 def index():
@@ -85,7 +70,7 @@ def availability():
         result = jsonify(success=0)
     return result
 
-@app.route('/update',methods=['POST'])
+@app.route('/drone/update',methods=['POST'])
 def update():
     data = request.get_json()
 
