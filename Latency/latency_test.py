@@ -37,7 +37,7 @@ for service in services:
         total_min = min
     if total_max < max:
         total_max = max
-    print("{} calls to {} took an average of {} ms with a maximum of {} and a minimum of {}".format(iterations,service[0],total_time/iterations,max,min))
+    print("{} calls to {} took an average of {}s with a maximum of {}s and a minimum of {}s".format(iterations,service[0],total_time/iterations,max,min))
     total_request_time += total_time
 
-print("The average of all web server calls was {}ms with a maximum of {} and a minimum of {}".format(total_time/(iterations*total_services),total_max,total_min))
+print("The average of all {} web server calls was {}s with a maximum of {}s and a minimum of {}s".format(iterations*total_services,total_time/(iterations*total_services),total_max,total_min))

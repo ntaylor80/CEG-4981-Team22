@@ -15,7 +15,7 @@ with open("test2.png", "rb") as imageFile:
 # ]
 
 boundaries = [
-    ([160, 90, 15],[255, 255, 120]),  # Blue mask lower/upper
+    ([170, 120, 15],[255, 255, 120]),  # Blue mask lower/upper
     ([50, 100, 200], [180, 200, 255])  # Orange mask Lower/Upper
 ]
 
@@ -42,7 +42,7 @@ def analyze_image(image):
         # find the colors within the specified boundaries and apply
         # the mask
         mask = cv2.inRange(img_color, lower, upper)
-        cv2.imwrite("mask{}.png".format(i),mask)
+        # cv2.imwrite("mask{}.png".format(i),mask)
         # cv2.imshow("test",mask)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
@@ -74,13 +74,13 @@ def countStars(image):
             # print("I'm a star")
             areas.append(area)
 
+
     if areas:
         max_area = max(areas)
         for area in areas:
             error = np.abs((max_area - area) / max_area) * 100
             if error < 10:
                 starCount += 1
-        print("stars ",starCount)
 
     return starCount
 
